@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="HealthOnCall.QuestionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HealthOnCall"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="58*"/>
+            <RowDefinition Height="193*"/>
+            <RowDefinition Height="424*"/>
+            <RowDefinition Height="93*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="appName" HorizontalAlignment="Left" Margin="97,0,0,0" TextWrapping="Wrap" Text="Health On Call" VerticalAlignment="Top" Height="30" Width="161" FontSize="24"/>
+        <Image HorizontalAlignment="Left" Height="58" Margin="10,0,0,0" VerticalAlignment="Top" Width="82"/>
+        <TextBlock x:Name="textQuestion" Grid.Row="1" TextWrapping="Wrap" Text="What time do you wake up?"/>
+
+    </Grid>
+</Page>
