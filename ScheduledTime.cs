@@ -1,3 +1,10 @@
+/*
+	ScheduledTime.cs
+		This class is in charge of keeping track of a range of days and times that a reminder
+		is valid for. The class also provides a method bool IsMember(char, char) that checks
+		a requested day and time against the array of valid days and times in the ScheduledTime.
+*/
+
 using System;
 
 namespace HealthOnCall {
