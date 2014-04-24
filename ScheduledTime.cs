@@ -1,10 +1,10 @@
 using System;
 
-namespace ScheduledTime {
+namespace HealthOnCall {
 	public class ScheduledTime {
 		char[] 	scheduledDays;
 		int[] 	scheduleTimes;
-		
+
 		ScheduledTime(char[] days, int[] times) {
 			scheduledDays 	= days;
 			scheduleTimes 	= times;
@@ -18,12 +18,33 @@ namespace ScheduledTime {
 			return scheduledTimes;
 		}
 
-		void 	SetDayList(char[] days) {
+		void 	SetDayList (char[] days) {
 			scheduledDays = days;
 		}
 
-		void SetTimeList(char[] times) {
+		void 	SetTimeList (char[] times) {
 			scheduledTimes = times;
+		}
+
+		bool 	IsMember (char inputDay, char inputTime) {
+			bool returnDay 	= false;
+			bool returnTime = false;
+
+			foreach (char day in scheduledDays) {
+				if (day == inputDay) {
+					returnDay = true;
+				}
+			}
+
+			if (returnDay) {
+				foreach (char time in scheduleTimes) {
+					if (time == inputTime) {
+						returnTime = true;
+					}
+				}
+			}
+
+			return returnTime && returnDay;
 		}
 
 	}
