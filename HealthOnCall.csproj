@@ -127,9 +127,12 @@
     <Compile Include="QuestionsPage.xaml.cs">
       <DependentUpon>QuestionsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Reminder.cs" />
     <Compile Include="ReminderPage.xaml.cs">
       <DependentUpon>ReminderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ScheduledTime.cs" />
+    <Compile Include="Scheduler.cs" />
     <Compile Include="SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
