@@ -27,6 +27,15 @@ namespace HealthOnCall
             this.InitializeComponent();
         }
 
+        public ReminderPage(Reminder r) //temp (to remove)
+        {
+
+            this.InitializeComponent();
+            reminderImage.Source = ImageID.GetImage(r.GetPictureID());
+            reminderText.Text = r.GetTitle();
+        }
+
+
         private void settingsButton_Click(object sender, RoutedEventArgs e)
         {
             SettingsPage sp = new SettingsPage();

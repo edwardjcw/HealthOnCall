@@ -17,11 +17,15 @@ using Windows.UI.Xaml.Navigation;
 
 namespace HealthOnCall
 {
+
+    
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class QuestionsPage : Page
     {
+
+        public static Scheduler scheduler;
 
         List<string> questions = new List<string>()
         {
@@ -80,10 +84,10 @@ namespace HealthOnCall
 
         }
 
-        private void ProceedMain()
+        public void ProceedMain()
         {
             //start scheduled model
-
+            scheduler = new Scheduler(times[0], times[1], times[2], times[3], times[4]);
             ReminderPage rp = new ReminderPage();
             this.Content = rp;
 

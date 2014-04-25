@@ -8,6 +8,8 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Button x:Name="addReminder" Content="Button" HorizontalAlignment="Left" Margin="557,219,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="102" Width="253" Click="addReminder_Click"/>
+        <Button x:Name="addReminder" Content="Add Reminder" HorizontalAlignment="Left" Margin="557,219,0,0" VerticalAlignment="Top" FontFamily="Global User Interface" Height="102" Width="253" Click="addReminder_Click"/>
+        <Button Content="List Reminders" HorizontalAlignment="Left" Margin="557,364,0,0" VerticalAlignment="Top" Height="102" Width="253"/>
+        <Button Content="Go Back" HorizontalAlignment="Left" Margin="1227,704,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Page>

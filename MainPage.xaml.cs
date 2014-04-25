@@ -22,6 +22,9 @@ namespace HealthOnCall
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        
+        
+        
         public MainPage()
         {
             this.InitializeComponent();
@@ -34,4 +37,7 @@ namespace HealthOnCall
             this.Content = qPage;
         }
     }
+
+   
+
 }

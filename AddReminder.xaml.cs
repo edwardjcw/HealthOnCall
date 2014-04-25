@@ -249,6 +249,11 @@ namespace HealthOnCall
             }
 
             //ADD THE REMINDER
+            ScheduledTime st = new ScheduledTime(days.ToArray(), segment.ToArray());
+            bool priority = checkPriority.IsChecked == true;
+            Reminder reminder = new Reminder(textReminder.Text, st, ImageID.GetLastID(), priority);
+            QuestionsPage.scheduler.AddReminder(reminder);
+            this.Content = new ReminderPage(reminder);
         }
 
         private void takePictureButton_Click(object sender, RoutedEventArgs e)
@@ -257,6 +262,11 @@ namespace HealthOnCall
             this.Content = bp;
 
 
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            
         }
 
     }

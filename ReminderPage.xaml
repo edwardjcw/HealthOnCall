@@ -12,12 +12,13 @@
             <RowDefinition Height="29*"/>
             <RowDefinition Height="3*"/>
         </Grid.RowDefinitions>
-        <Viewbox>
-          <TextBlock TextWrapping="Wrap" Text="Reminder Screen"/>
+        <Viewbox Margin="0,0,0,455">
+          <TextBlock x:Name="reminderText" TextWrapping="Wrap" Text="Reminder Screen"/>
   
         </Viewbox>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="1279,17,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Global User Interface"/>
+        <Button Content="Done" HorizontalAlignment="Left" Margin="1279,17,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Global User Interface"/>
         <Button x:Name="settingsButton" Content="Settings" HorizontalAlignment="Left" Margin="7,17,0,0" Grid.Row="1" VerticalAlignment="Top" Click="settingsButton_Click"/>
+        <Image x:Name="reminderImage" HorizontalAlignment="Center" Height="425" Margin="10,261,0,0" VerticalAlignment="Center" Width="1336"/>
 
     </Grid>
 </Page>

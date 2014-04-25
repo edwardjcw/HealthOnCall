@@ -43,12 +43,13 @@
             <TextBlock TextWrapping="Wrap" Text="for"/>
         </Viewbox>
         <Viewbox Grid.Row="2" Grid.Column="1" >
-            <TextBox TextWrapping="Wrap" PlaceholderText="Name of Reminder" Width="373"/>
+            <TextBox x:Name="textReminder" TextWrapping="Wrap" PlaceholderText="Name of Reminder" Width="373"/>
 
         </Viewbox>
         <Button x:Name="takePictureButton" Content="Take Picture for Reminder" Grid.Column="1" HorizontalAlignment="Left" Margin="734,70,0,0" Grid.Row="3" VerticalAlignment="Top" Height="79" Width="279" Click="takePictureButton_Click"/>
         <Button x:Name="saveReminderButton" Content="Save Reminder" Grid.Column="1" HorizontalAlignment="Left" Margin="957,7,0,0" Grid.Row="4" VerticalAlignment="Top" Click="saveReminderButton_Click"/>
         <Image x:Name="image" Grid.Column="1" HorizontalAlignment="Left" Height="176" Margin="737,170,0,0" Grid.Row="3" VerticalAlignment="Top" Width="273"/>
+        <CheckBox x:Name="checkPriority" Content="Essential for Health" Grid.Column="1" HorizontalAlignment="Left" Margin="926,384,0,0" Grid.Row="3" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
 
 
 

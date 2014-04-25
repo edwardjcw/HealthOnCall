@@ -9,8 +9,9 @@ using System;
 using System.Collections.Generic;
 
 namespace HealthOnCall {
-	class Reminder : IComparable<Reminder> {
-		private int 			id;			// id will help the Scheduler in the deterministic ordering
+	public class Reminder : IComparable<Reminder> {
+        static int nID = 0;
+        private int 			id;			// id will help the Scheduler in the deterministic ordering
 											// of the given reminders
 		private string 			title;
 		private ScheduledTime	time;		// Keeps track of the range of valid days and times
@@ -18,7 +19,16 @@ namespace HealthOnCall {
 											// controller handle the loading and displaying.
 		private bool 			priority;	// We define HIGH => medical; LOW => lifestyle
 
-		public Reminder(int inputID, string inputTitle, ScheduledTime inputTime, int pID, bool inputPriority) {
+        public Reminder(string inputTitle, ScheduledTime inputTime, int pID, bool inputPriority)
+        {
+            id = nID++;
+            title = inputTitle;
+            time = inputTime;
+            pictureID = pID;
+            priority = inputPriority;
+        }
+        
+        public Reminder(int inputID, string inputTitle, ScheduledTime inputTime, int pID, bool inputPriority) {
 			id 			= inputID;
 			title 		= inputTitle;
 			time 		= inputTime;

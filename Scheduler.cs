@@ -17,19 +17,23 @@
 
 using System;
 using System.Collections.Generic;
-using System.Timers;
-using System.Threading;
-using System.Windows.Threading;
+//using System.Timers;
+//using System.Threading;
+//using System.Windows.Threading;
+using Windows.UI.Xaml;
+
 
 namespace HealthOnCall {
-	class Scheduler {
+	public class Scheduler {
 		List<Reminder> reminders;
 		DateTime wake;
 		DateTime breakfast;
 		DateTime lunch;
 		DateTime dinner;
 		DateTime sleep;
-		System.Threading.Timer t;
+		//System.Threading.Timer t;
+
+        DispatcherTimer t = new DispatcherTimer();
 
 		public Scheduler(DateTime wakeTime, DateTime breakfastTime, DateTime lunchTime, DateTime dinnerTime, DateTime sleepTime) {
 			reminders 	= new List<Reminder>();
@@ -38,10 +42,15 @@ namespace HealthOnCall {
 			lunch 		= lunchTime;
 			dinner 		= dinnerTime;
 			sleep 		= sleepTime;
+
+            t.Tick += FormQueue;
+            CheckTime();
 		}
+
+
 		//Queue
 		public void AddReminder (Reminder inputReminder) {
-			Console.WriteLine("Successfully added: {0}", inputReminder.GetTitle());
+			//Console.WriteLine("Successfully added: {0}", inputReminder.GetTitle());
 			reminders.Add(inputReminder);
 			reminders.Sort();
 
@@ -63,7 +72,7 @@ namespace HealthOnCall {
 				return 'b';
 			} else if (inputTime > lunch && inputTime <= dinner) {
 				return 'l';
-			} else if (inputTime > dinner && inputTime <= sleep) {
+			} else if (inputTime > dinner && inputTime <= sleep - new TimeSpan(0,30,0)) {
 				return 'd';
 			} else {
 				return 's';
@@ -91,15 +100,16 @@ namespace HealthOnCall {
 			}
 		}
 
-		private void FormQueue(object sender) {
+        private void FormQueue(object sender, object e)
+        {
 			try {
 				Queue<Reminder> scheduledReminders = new Queue<Reminder>();
-				Console.WriteLine("Congrats. Your clock didn't fail. Mom might still love you one day.");
+				//Console.WriteLine("Congrats. Your clock didn't fail. Mom might still love you one day.");
 				foreach (Reminder x in reminders) {
-					Console.WriteLine("We just saw {0} in DAR()!", x.GetTitle());
+					//Console.WriteLine("We just saw {0} in DAR()!", x.GetTitle());
 					if (x.GetPriority()) {
 						if (x.ProbeTime(ConvertDay(DateTime.Now), ConvertTime(DateTime.Now))) {
-							Console.WriteLine("{0} enqueuing!", x.GetTitle());
+							//Console.WriteLine("{0} enqueuing!", x.GetTitle());
 							scheduledReminders.Enqueue(x);
 						}
 					}
@@ -113,7 +123,7 @@ namespace HealthOnCall {
 					}
 				}
 			} catch (Exception ex) {
-				Console.WriteLine("EX: {0}", ex.Message);
+				//Console.WriteLine("EX: {0}", ex.Message);
 			}
 		}
 
@@ -140,11 +150,11 @@ namespace HealthOnCall {
 			}
 
 			try {
-				t = new System.Threading.Timer(
-					FormQueue, null, (int)timeDifference.TotalMilliseconds, Timeout.Infinite);
-				Console.WriteLine("What the hell t?");
+                t.Interval = timeDifference;
+				
+				//Console.WriteLine("What the hell t?");
 			} catch (Exception ex) {
-				Console.WriteLine("Exception: ", ex.Message);
+				//Console.WriteLine("Exception: ", ex.Message);
 			}
 			//Console.WriteLine(timeDifference);
 			//DeployAsyncRoutines();
