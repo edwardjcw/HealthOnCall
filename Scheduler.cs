@@ -18,6 +18,8 @@
 using System;
 using System.Collections.Generic;
 using System.Timers;
+using System.Threading;
+using System.Windows.Threading;
 
 namespace HealthOnCall {
 	class Scheduler {
@@ -27,6 +29,7 @@ namespace HealthOnCall {
 		DateTime lunch;
 		DateTime dinner;
 		DateTime sleep;
+		System.Threading.Timer t;
 
 		public Scheduler(DateTime wakeTime, DateTime breakfastTime, DateTime lunchTime, DateTime dinnerTime, DateTime sleepTime) {
 			reminders 	= new List<Reminder>();
@@ -88,24 +91,29 @@ namespace HealthOnCall {
 			}
 		}
 
-		private void DeployAsyncRoutines() {//object sender, ElapsedEventArgs e) {
-			Queue<Reminder> scheduledReminders = new Queue<Reminder>();
-			foreach (Reminder x in reminders) {
-				Console.WriteLine("We just saw {0} in DAR()!", x.GetTitle());
-				if (x.GetPriority()) {
-					if (x.ProbeTime(ConvertDay(DateTime.Now), ConvertTime(DateTime.Now))) {
-						Console.WriteLine("{0} enqueuing!", x.GetTitle());
-						scheduledReminders.Enqueue(x);
+		private void FormQueue(object sender) {
+			try {
+				Queue<Reminder> scheduledReminders = new Queue<Reminder>();
+				Console.WriteLine("Congrats. Your clock didn't fail. Mom might still love you one day.");
+				foreach (Reminder x in reminders) {
+					Console.WriteLine("We just saw {0} in DAR()!", x.GetTitle());
+					if (x.GetPriority()) {
+						if (x.ProbeTime(ConvertDay(DateTime.Now), ConvertTime(DateTime.Now))) {
+							Console.WriteLine("{0} enqueuing!", x.GetTitle());
+							scheduledReminders.Enqueue(x);
+						}
 					}
 				}
-			}
 
-			foreach (Reminder x in reminders) {
-				if (!x.GetPriority()) {
-					if (x.ProbeTime(ConvertDay(DateTime.Now), ConvertTime(DateTime.Now))) {
-						scheduledReminders.Enqueue(x);
+				foreach (Reminder x in reminders) {
+					if (!x.GetPriority()) {
+						if (x.ProbeTime(ConvertDay(DateTime.Now), ConvertTime(DateTime.Now))) {
+							scheduledReminders.Enqueue(x);
+						}
 					}
 				}
+			} catch (Exception ex) {
+				Console.WriteLine("EX: {0}", ex.Message);
 			}
 		}
 
@@ -131,8 +139,15 @@ namespace HealthOnCall {
 
 			}
 
-			Console.WriteLine(timeDifference);
-			DeployAsyncRoutines();
+			try {
+				t = new System.Threading.Timer(
+					FormQueue, null, (int)timeDifference.TotalMilliseconds, Timeout.Infinite);
+				Console.WriteLine("What the hell t?");
+			} catch (Exception ex) {
+				Console.WriteLine("Exception: ", ex.Message);
+			}
+			//Console.WriteLine(timeDifference);
+			//DeployAsyncRoutines();
 
 		}
 	}
