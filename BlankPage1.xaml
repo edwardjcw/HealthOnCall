@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="HealthOnCall.BlankPage1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HealthOnCall"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <TextBlock HorizontalAlignment="Left" Margin="59,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="493" Width="1221" TextAlignment="Center" FontSize="56">
+        	<Run Text="CLICK THE READY BUTTON WHEN YOU ARE"/>
+        	<LineBreak/>
+        	<Run Text="READY TO TAKE YOUR PICTURE."/>
+        	<LineBreak/>
+        	<Run/>
+        	<LineBreak/>
+        	<Run Text="TO TAKE THE PICTURE CLICK ANYWHERE ON THE SCREEN"/>
+        </TextBlock>
+        <Button x:Name="readyButton" Content="I'M READY" HorizontalAlignment="Left" Margin="450,602,0,0" VerticalAlignment="Top" Height="116" Width="464" FontSize="36" Click="readyButton_Click"/>
+
+    </Grid>
+</Page>

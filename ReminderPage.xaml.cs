@@ -20,18 +20,17 @@ namespace HealthOnCall
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ReminderPage : Page
     {
-        public MainPage()
+        public ReminderPage()
         {
             this.InitializeComponent();
-
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void settingsButton_Click(object sender, RoutedEventArgs e)
         {
-            QuestionsPage qPage = new QuestionsPage();
-            this.Content = qPage;
+            SettingsPage sp = new SettingsPage();
+            this.Content = sp;
         }
     }
 }

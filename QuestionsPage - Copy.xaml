@@ -1,0 +1,111 @@
+﻿<Page
+    x:Class="HealthOnCall.QuestionsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:HealthOnCall"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style x:Key="ClockStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="Global User Interface"/>
+            <Setter Property="LineStackingStrategy" Value="BaselineToBaseline"/>
+            <Setter Property="TextLineBounds" Value="Tight"/>
+        </Style>
+
+    </Page.Resources>
+
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="108"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="appName" HorizontalAlignment="Left" Margin="97,0,0,0" TextWrapping="Wrap" Text="Health On Call" VerticalAlignment="Top" Height="30" Width="161" FontSize="24"/>
+        <Image x:Name="logo" HorizontalAlignment="Left" Height="58" Margin="10,0,0,0" VerticalAlignment="Top" Width="82" Source="Assets/Logo.png"/>
+        <Viewbox Grid.Row="1">
+            <TextBlock x:Name="textQuestion" Grid.Row="1" TextWrapping="Wrap" Text="What time do you wake up?"/>
+        </Viewbox>
+        <Button x:Name="okButton" Content="Ok" HorizontalAlignment="Left" Margin="1282,30,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+
+        <ListView x:Name="hourList" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="180" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="260,0,0,0">
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">1</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">2</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">3</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">4</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">5</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">6</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">7</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">8</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">9</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">10</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">11</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">12</TextBlock>
+            </Viewbox>
+
+
+        </ListView>
+        <ListView x:Name="minuteList" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="350" ScrollViewer.VerticalScrollBarVisibility="Hidden" Margin="500,0,0,0">
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">00</TextBlock>
+            </Viewbox>
+            <Viewbox>
+                <TextBlock Style="{StaticResource ClockStyle}">30</TextBlock>
+            </Viewbox>
+        </ListView>
+
+       <ItemsControl HorizontalAlignment="Right" Height="380" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="420">
+            <ItemsControl.ItemContainerTransitions>
+                <TransitionCollection>
+                    <EntranceThemeTransition/>
+                </TransitionCollection>
+            </ItemsControl.ItemContainerTransitions>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid Height="200" Orientation="Horizontal" ScrollViewer.VerticalScrollBarVisibility="Hidden"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+           <ItemsControl.Items>
+               
+                <Viewbox>
+                    <TextBlock Style="{StaticResource ClockStyle}">am</TextBlock>
+                </Viewbox>
+                <Viewbox>
+                    <TextBlock Style="{StaticResource ClockStyle}">pm</TextBlock>
+                </Viewbox>
+            </ItemsControl.Items> 
+           
+            
+        </ItemsControl>
+
+
+    </Grid>
+</Page>

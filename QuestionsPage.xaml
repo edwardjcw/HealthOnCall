@@ -7,16 +7,32 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style x:Key="ClockStyle" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="FontFamily" Value="Global User Interface"/>
+            <Setter Property="LineStackingStrategy" Value="BaselineToBaseline"/>
+            <Setter Property="TextLineBounds" Value="Tight"/>
+        </Style>
+
+    </Page.Resources>
+
+
+
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="58*"/>
-            <RowDefinition Height="193*"/>
-            <RowDefinition Height="424*"/>
-            <RowDefinition Height="93*"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="108"/>
         </Grid.RowDefinitions>
         <TextBlock x:Name="appName" HorizontalAlignment="Left" Margin="97,0,0,0" TextWrapping="Wrap" Text="Health On Call" VerticalAlignment="Top" Height="30" Width="161" FontSize="24"/>
-        <Image HorizontalAlignment="Left" Height="58" Margin="10,0,0,0" VerticalAlignment="Top" Width="82"/>
-        <TextBlock x:Name="textQuestion" Grid.Row="1" TextWrapping="Wrap" Text="What time do you wake up?"/>
-
+        <Image x:Name="logo" HorizontalAlignment="Left" Height="58" Margin="10,0,0,0" VerticalAlignment="Top" Width="82" Source="Assets/Logo.png"/>
+        <Viewbox Grid.Row="1">
+            <TextBlock x:Name="textQuestion" Grid.Row="1" TextWrapping="Wrap" Text="What time do you wake up?"/>
+        </Viewbox>
+        <Button x:Name="okButton" Content="Ok" HorizontalAlignment="Left" Margin="1251,30,0,0" Grid.Row="3" VerticalAlignment="Top" Width="90" Click="okButton_Click"/>
+        <Button x:Name="goBackButton" Content="Go Back" HorizontalAlignment="Left" Margin="1118,30,0,0" Grid.Row="3" VerticalAlignment="Top" Click="goBackButton_Click"/>
+        <TimePicker x:Name="timePicker" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="53" Margin="444,149,627,198" Width="295"/>
     </Grid>
 </Page>
