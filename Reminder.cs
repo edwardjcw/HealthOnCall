@@ -6,46 +6,61 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 namespace HealthOnCall {
-	class Reminder {
-		int 			id;			// id will help the Scheduler in the deterministic ordering
-									// of the given reminders
-		string 			title;
-		ScheduledTime	time;		// Keeps track of the range of valid days and times
-		int 			pictureID;	// Just keep track of an image identifier and let the
-									// controller handle the loading and displaying.
-		bool 			priority;	// We define HIGH => medical; LOW => lifestyle
+	class Reminder : IComparable<Reminder> {
+		private int 			id;			// id will help the Scheduler in the deterministic ordering
+											// of the given reminders
+		private string 			title;
+		private ScheduledTime	time;		// Keeps track of the range of valid days and times
+		private int 			pictureID;	// Just keep track of an image identifier and let the
+											// controller handle the loading and displaying.
+		private bool 			priority;	// We define HIGH => medical; LOW => lifestyle
 
-		Reminder(int inputID, string inputTitle, ScheduledTime inputTime, bool inputPriority) {
+		public Reminder(int inputID, string inputTitle, ScheduledTime inputTime, int pID, bool inputPriority) {
 			id 			= inputID;
 			title 		= inputTitle;
 			time 		= inputTime;
+			pictureID 	= pID;
 			priority 	= inputPriority;
 		}
 
-		void 			SetTitle (string inputTitle) {
+		public void SetPictureID (int pID) {
+			pictureID = pID;
+		}
+
+		public int GetPictureID () {
+			return pictureID;
+		}
+
+		public void SetTitle (string inputTitle) {
 			title = inputTitle;
 		}
 
-		string 	GetTitle () {
+		public string 	GetTitle () {
 			return title;
 		}
 
-		int GetID () {
+		public int GetID () {
 			return id;
 		}
 
-		bool GetPriority () {
+		public bool GetPriority () {
 			return priority;
 		}
 
-		void SetPriority (bool inputPriority) {
+		public void SetPriority (bool inputPriority) {
 			priority = inputPriority;
 		}
 
-		bool ProbeTime (char inputDay, char inputTime) {
-			return time.IsMember(day, time);
+		public int CompareTo(Reminder other) {
+			if (other == null) return 1;
+			else return id.CompareTo(other.GetID());
+ 		}
+
+		public bool ProbeTime (char inputDay, char inputTime) {
+			return time.IsMember(inputDay, inputTime);
 		}
 
 

@@ -10,30 +10,30 @@ using System;
 namespace HealthOnCall {
 	public class ScheduledTime {
 		char[] 	scheduledDays;
-		int[] 	scheduleTimes;
+		char[] 	scheduledTimes;
 
-		ScheduledTime(char[] days, int[] times) {
+		public ScheduledTime(char[] days, char[] times) {
 			scheduledDays 	= days;
-			scheduleTimes 	= times;
+			scheduledTimes 	= times;
 		}
 
-		char[] 	GetDayList() {
+		public char[] 	GetDayList() {
 			return scheduledDays;
 		}
 
-		char[]	GetTimeList() {
+		public char[]	GetTimeList() {
 			return scheduledTimes;
 		}
 
-		void 	SetDayList (char[] days) {
+		public void 	SetDayList (char[] days) {
 			scheduledDays = days;
 		}
 
-		void 	SetTimeList (char[] times) {
+		public void 	SetTimeList (char[] times) {
 			scheduledTimes = times;
 		}
 
-		bool 	IsMember (char inputDay, char inputTime) {
+		public bool 	IsMember (char inputDay, char inputTime) {
 			bool returnDay 	= false;
 			bool returnTime = false;
 
@@ -44,7 +44,7 @@ namespace HealthOnCall {
 			}
 
 			if (returnDay) {
-				foreach (char time in scheduleTimes) {
+				foreach (char time in scheduledTimes) {
 					if (time == inputTime) {
 						returnTime = true;
 					}
